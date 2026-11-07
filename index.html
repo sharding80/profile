@@ -1,25 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <div class="title">HELLO</div>
-    <!--LINKS-->
-    <div class="links-grid">
-      <div class="nav-link">
-            <a href="index.html">HOME</a>
-      </div>    
-      <div class="nav-link">
-            <a href="about-me/about-me.html">ABOUT ME</a>
-      </div>
-      <div class="nav-link">
-            <a href="Skills/Skills.html">SKILLS</a>
-      </div>
-      <div class="nav-link">
-            <a href="Experience/Experience.html">EXPERIENCE</a>
-      </div>
-      <div class="nav-link">
-            <a href="Contact/Contact.html">CONTACT</a>
-      </div>        
+      <!-- BIG GREETING -->
+    <header class="greeting">
+        <h1>HELLO</h1>
+    </header>
+      <!-- TOP NAVIGATION -->
+      <nav class="top-nav">
+        <a href="index.html">HOME</a>
+        <a href="about-me/about-me.html">ABOUT ME</a>
+        <a href="skills/skills.html">SKILLS</a>
+        <a href="experience/experience.html">EXPERIENCE</a>
+        <a href="contact/contact.html">CONTACT</a>
+    </nav>
+     <!-- PHOTO SPACE -->
+    <div class="photo-space">
+        <!-- Later, replace this comment with your photo:
+        <img src="pictures/my-photo.png" alt="Photo of Sarah">
+        -->
     </div>
+    </div>
+
+    <!-- SECTION TILES -->
+    <section class="tiles">
+
+        <button class="tile" data-dialog="about-popup">
+            <div class="tile-photo">
+                <!-- <img src="pictures/about-me.jpg" alt="About me"> -->
+            </div>
+            <span class="tile-label">ABOUT ME</span>
+        </button>
+
+        <button class="tile" data-dialog="skills-popup">
+            <div class="tile-photo">
+                <!-- <img src="pictures/skills.jpg" alt="My skills"> -->
+            </div>
+            <span class="tile-label">SKILLS</span>
+        </button>
+
+        <button class="tile" data-dialog="experience-popup">
+            <div class="tile-photo">
+                <!-- <img src="pictures/experience.jpg" alt="My experience"> -->
+            </div>
+            <span class="tile-label">EXPERIENCE</span>
+        </button>
+
+        <button class="tile" data-dialog="contact-popup">
+            <div class="tile-photo">
+                <!-- <img src="pictures/contact.jpg" alt="Contact me"> -->
+            </div>
+            <span class="tile-label">CONTACT</span>
+        </button>
+
+    </section>
+
+    <!-- POPUPS -->
+    <dialog id="about-popup">
+        <h2>About Me</h2>
+        <p> All about Sarah!</p>
+        <a href="about-me/about-me.html">Read more</a>
+        <form method="dialog"><button>Close</button></form>
+    </dialog>
+
+    <dialog id="skills-popup">
+        <h2>Skills</h2>
+        <p> Here is where my skills are. </p>
+        <a href="skills/skills.html">Read more</a>
+        <form method="dialog"><button>Close</button></form>
+    </dialog>
+
+    <dialog id="experience-popup">
+        <h2>Experience</h2>
+        <p> All about my experience.</p>
+        <a href="experience/experience.html">Read more</a>
+        <form method="dialog"><button>Close</button></form>
+    </dialog>
+
+    <dialog id="contact-popup">
+        <h2>Contact</h2>
+        <p>https://www.linkedin.com/in/sarah-harding-21bbb4430/</p>
+        <a href="contact/contact.html">Read more</a>
+        <form method="dialog"><button>Close</button></form>
+    </dialog>
+
+    <script>
+      // When a tile is clicked, open the popup it points to
+      document.querySelectorAll('.tile').forEach(function (tile) {
+        tile.addEventListener('click', function () {
+          document.getElementById(tile.dataset.dialog).showModal();
+        });
+      });
+
+      // Clicking the dark area outside a popup closes it
+      document.querySelectorAll('dialog').forEach(function (popup) {
+        popup.addEventListener('click', function (event) {
+          if (event.target === popup) popup.close();
+        });
+      });
+    </script>
+    </section>
 </body>
 </html>
